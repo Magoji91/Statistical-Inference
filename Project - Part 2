@@ -58,7 +58,7 @@ ggplot(data=ToothGrowth, aes(x=as.factor(dose), y=len, fill=supp)) +
     ylab("Tooth length") +
     guides(fill=guide_legend(title="Supplement type"))
     
-Analyzing the graph, it can be seen that there is a positive correlation between guinea-pig tooth length and vitamin C dose levels for both methods of administration.    
+The ToothGrowth chart shows the relationship between the growth of guinea-pig teeth after application of orange juice and ascorbic acid at each of the three vitamin C levels (0.5, 1 and 2 mg) .
   
 III-) Evaluating dental growth through confidence intervals and hypothesis testing.
 fit <- lm(len ~ dose + supp, data=ToothGrowth)
@@ -68,9 +68,6 @@ confint(fit)
 dose1        6.705297 11.554703
 dose2       13.070297 17.919703
 suppVC      -5.679762 -1.720238
-
-OBS:
-
 
 summary(fit)
 
@@ -95,4 +92,5 @@ Multiple R-squared:  0.7623,	Adjusted R-squared:  0.7496
 F-statistic: 59.88 on 3 and 56 DF,  p-value: < 2.2e-16
 
 
-OBS:
+IV-) CONCLUSION
+
