@@ -1,4 +1,6 @@
-I-) TOOTHGROWTH + EXPLORATORY DATA ANALYSIS
+PROJECT TOOTHGROWTH 
+
+I-)EXPLORATORY DATA ANALYSIS
 # load the dataset
 library(datasets)
 data(ToothGrowth)
