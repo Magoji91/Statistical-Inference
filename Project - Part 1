@@ -1,0 +1,70 @@
+The project consists in the study of the comparison between the exponential distribution in R and the Central Limit Theorem.
+The exponential distribution will be simulated in R with rexp (n, lambda):
+* Lambda is the rate parameter.
+* Average exponential distribution = 1 / lambda
+* Standard deviation = 1 / lambda.
+* Lambda = 0.2 for all simulations.
+
+NOTE: The distribution of averages of 40 exponentials will be investigated by means of 1000 (one thousand) simulations in order to prove that the distribution is normal.
+
+I-) SELECT TOOLS:
+require(knitr)
+## Loading required package: knitr
+require(ggplot2)
+## Loading required package: ggplot2
+opts_chunk$set(echo=TRUE)
+set.seed(1)
+
+Initialize the variables to the values: 
+n = 40 
+lambda = 0.2 
+number of iterations = numsim=1000
+
+n<-40
+lambda<-0.2
+numsim<-1000
+
+II-) CREATE THE DATASET AND EMPIRICAL MEAN: 
+
+dataset<-matrix(rexp(n*numsim,lambda),numsim)
+row_means <- apply(dataset,1,mean)
+emp_mean <- mean(row_means)
+emp_sd <- sd(row_means)
+emp_var <- var(row_means)
+
+III-) DISPLAY THE EMPIRICAL VALUES:
+emp_mean
+## [1] 4.990025
+emp_sd
+## [1] 0.7859435
+emp_var
+## [1] 0.6177072
+
+IV-) THEORETICAL VALUE: 
+TMean = 1/lambda
+TStdDev = ((1/lambda) * (1/sqrt(n)))
+TVar = TStdDev^2
+
+V-) GRAPH
+dfRowMeans<-data.frame(RowMeans) # convert to data.frame for ggplot
+mp<-ggplot(dfRowMeans,aes(x=RowMeans))
+mp<-mp+geom_histogram(binwidth = lambda,fill="white",color="black",aes(y = ..density..))
+mp<-mp + labs(title="Density of 40 Numbers from Exponential Distribution", x="Mean of 40 Selections", y="Density")
+mp<-mp + geom_vline(xintercept=ActualMean,size=1.0, color="black") # add a line for the actual mean
+mp<-mp + stat_function(fun=dnorm,args=list(mean=ActualMean, sd=ActualSD),color = "purple", size = 1.0)
+mp<-mp + geom_vline(xintercept=TheoryMean,size=1.0,color="orange",linetype = "longdash")
+mp<-mp + stat_function(fun=dnorm,args=list(mean=TheoryMean, sd=TheorySD),color = "red", size = 1.0)
+
+
+QUESTIONS
+1. Show where the distribution is centered at and compare it to the theoretical center of the distribution.
+The empirical distribution (4.9900252) is very close to the theoretical center (5)
+
+2. Show how variable it is and compare it to the theoretical variance of the distribution.
+There is almost no difference between an empirical variance (0.6177072) and a theoretical variance (0.625), as well as between the standard empirical standard (0.7859435) and theoretical theoretical variance (0.7905694).
+
+3. Show that the distribution is approximately normal.
+The graph shows a theoretical average as a orange line, while real media is shown by the black line. In addition, it shows a normal curve formed by the theoretical media and its standard deviation in red. Meanwhile, a curve formed by the real mean and the standard deviation are in purple. Finally, a real data density appears on the white bars.
+
+We conclude that a calculated curve is very close to the theoretical normal curve, proving a Central Limit Theory.
+
