@@ -1,5 +1,8 @@
 PROJECT TOOTHGROWTH 
 
+OBJECTIVE: Analysis of the growth data of the teeth of 10 guinea pigs, after application in three dosage levels of supplements rich in Vitamin C, which are: orange juice (OJ) and ascorbic acid (VC).
+
+
 I-)EXPLORATORY DATA ANALYSIS
 # load the dataset
 library(datasets)
