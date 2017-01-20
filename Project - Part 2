@@ -47,7 +47,7 @@ summary(ToothGrowth)
  
  # Classify the dose levels and delivery methods
 table(ToothGrowth$dose, ToothGrowth$supp)
-OJ VC
+      OJ VC
   0.5 10 10
   1   10 10
   2   10 10
@@ -60,7 +60,7 @@ ggplot(data=ToothGrowth, aes(x=as.factor(dose), y=len, fill=supp)) +
     ylab("Tooth length") +
     guides(fill=guide_legend(title="Supplement type"))
     
-The ToothGrowth chart shows the correlation between the growth of guinea-pig teeth after application of orange juice and ascorbic acid at each of the three vitamin C levels (0.5, 1 and 2 mg/day) .
+The ToothGrowth chart shows the correlation between the growth of guinea-pig teeth after application of orange juice(OJ) and ascorbic acid(VC) at each of the three vitamin C levels (0.5, 1 and 2 mg/day) .
   
 III-) Evaluating dental growth through confidence intervals and hypothesis testing.
 fit <- lm(len ~ dose + supp, data=ToothGrowth)
@@ -95,5 +95,5 @@ F-statistic: 59.88 on 3 and 56 DF,  p-value: < 2.2e-16
 
 
 IV-) CONCLUSION
-Orange juice when applied at doses of 0.5mg / day and 1.0mg / day promoted greater tooth growth than the 2.0mg / day dosage of Ascorbic Acid.
+OJ when applied at doses of 0.5mg / day and 1.0mg / day promoted greater tooth growth than the 2.0mg / day dosage of VC.
 
